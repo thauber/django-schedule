@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes import fields
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import User
@@ -224,7 +224,7 @@ class CalendarRelation(models.Model):
     calendar = models.ForeignKey(Calendar, verbose_name=_("calendar"))
     content_type = models.ForeignKey(ContentType)
     object_id = models.IntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    content_object = fields.GenericForeignKey('content_type', 'object_id')
     distinction = models.CharField(_("distinction"), max_length = 20, null=True)
     inheritable = models.BooleanField(_("inheritable"), default=True)
 
